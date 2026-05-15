@@ -18,7 +18,7 @@ public partial class MainWindow : Window
         a {color: cyan;}
         """;
 
-        const string lightTheme = @"body {background-color: white}";
+        const string lightTheme = @"body {background-color: white;}";
 
         // Check current theme
         return colors?.ThemeVariant == PlatformThemeVariant.Dark ? darkTheme : lightTheme;
@@ -28,7 +28,11 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
+        #if DEBUG
+        VersionText.Text = $"{AppConsts.VERSION}-{ThisAssembly.Git.Commit}";
+        #else
         VersionText.Text = AppConsts.VERSION;
+        #endif
 
         var blank = $"""
                       <!DOCTYPE html>
@@ -47,6 +51,7 @@ public partial class MainWindow : Window
             .UseSyntaxHighlighting()
             .UseEmojiAndSmiley()
             .UseYamlFrontMatter()
+            .UseBootstrap()
             .UseSoftlineBreakAsHardlineBreak()
             .Build();
         var input = MdInput.Text ?? string.Empty;
