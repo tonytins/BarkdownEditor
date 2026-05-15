@@ -1,5 +1,11 @@
 # Barkdown Editor
 
+<div style="align-content: center;">
+    <img src="./editor-screenshot.png"/>
+</div>
+
+---
+
 Barkdown is a simple Markdown editor designed using [Avalonia UI](https://avaloniaui.net).
 
 ## Minimum Requirements

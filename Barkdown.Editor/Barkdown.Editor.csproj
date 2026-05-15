@@ -34,6 +34,11 @@
       <None Remove="Assets\tpaw.png" />
       <AvaloniaResource Include="Assets\tpaw.png" />
       <None Remove="Assets\tpaw-acela.png" />
-      <AvaloniaResource Include="Assets\tpaw-acela.png" />
+      <None Remove="Assets\tpaw-white.png" />
+      <AvaloniaResource Include="Assets\tpaw-white.png" />
+      <None Remove="Assets\FontAwesome.otf" />
+      <AvaloniaResource Include="Assets\FontAwesome.otf" />
+      <None Remove="Assets\Icons\folder-open.svg" />
+      <None Remove="Assets\Icons\save.svg" />
     </ItemGroup>
 </Project>

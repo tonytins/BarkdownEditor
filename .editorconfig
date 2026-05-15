@@ -43,6 +43,20 @@ dotnet_naming_rule.consts_must_be_all_caps.severity = warning
 dotnet_naming_rule.consts_must_be_all_caps.symbols = const_fields
 dotnet_naming_rule.consts_must_be_all_caps.style = all_caps
 
+
+# Turn off the naming style that enforces an underscore prefix for private fields
+dotnet_naming_style.underscore_prefix_style.capitalization = camel_case
+dotnet_naming_style.underscore_prefix_style.required_prefix = _
+
+# Remove the rule that ties the naming style to private fields
+dotnet_naming_rule.private_fields_underscore_rule.severity = none
+dotnet_naming_rule.private_fields_underscore_rule.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore_rule.style = underscore_prefix_style
+
+# Symbol group for private fields (so the rule can be disabled)
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
 # Formatting
 csharp_new_line_before_open_brace = all
 csharp_indent_case_contents = true

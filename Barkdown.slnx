@@ -2,6 +2,7 @@
     <Folder Name="/Solution Items/">
         <File Path=".gitignore" />
         <File Path="README.md" />
+        <File Path="change_log.md"/>
         <File Path=".editorconfig" />
         <File Path="GitInfo.txt"/>
     </Folder>
