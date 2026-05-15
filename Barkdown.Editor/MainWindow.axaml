@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="720" d:DesignHeight="430"
+        Width="720" Height="430" x:Class="Barkdown.Editor.MainWindow"
+        ExtendClientAreaToDecorationsHint="True"
+        Title="Barkdown Editor">
+    <StackPanel>
+        <Border IsHitTestVisible="False" Height="35"
+                WindowDecorationProperties.ElementRole="TitleBar">
+            <TextBlock Margin="12,0" FontSize="17"
+                       VerticalAlignment="Center" HorizontalAlignment="Center"
+                       Text="Barkdown Editor" />
+        </Border>
+        <Grid Margin="2" ColumnDefinitions="*,*">
+            <TextBox Height="350" Margin="7,0"
+                Name="MdInput" AcceptsReturn="true"
+                TextWrapping="Wrap"
+                PlaceholderText="# Hello World!"
+                TextChanged="Markdown_OnTextChanged" />
+            <NativeWebView Grid.Column="1" Height="350"
+                           Margin="7,0"
+                           Source="https://localhost"
+                           Name="MdRender" />
+        </Grid>
+        <Border>
+            <Grid ColumnDefinitions="*,*" Margin="5">
+                <Image HorizontalAlignment="Left" Width="30" Source="avares://Barkdown.Editor/Assets/tpaw.png" />
+                <TextBlock Grid.Column="1" Name="VersionText" Margin="10" HorizontalAlignment="Right" Text="v0.1.100" />
+            </Grid>
+        </Border>
+    </StackPanel>
+</Window>
