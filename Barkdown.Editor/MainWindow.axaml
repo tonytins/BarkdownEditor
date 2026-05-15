@@ -5,6 +5,7 @@
         mc:Ignorable="d" d:DesignWidth="720" d:DesignHeight="430"
         Width="720" Height="430" x:Class="Barkdown.Editor.MainWindow"
         ExtendClientAreaToDecorationsHint="True"
+        Name="MdWindow"
         Title="Barkdown Editor">
     <StackPanel>
         <Border IsHitTestVisible="False" Height="35"
@@ -21,7 +22,6 @@
                 TextChanged="Markdown_OnTextChanged" />
             <NativeWebView Grid.Column="1" Height="350"
                            Margin="7,0"
-                           Source="https://localhost"
                            Name="MdRender" />
         </Grid>
         <Border>

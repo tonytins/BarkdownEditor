@@ -8,7 +8,21 @@ namespace Barkdown.Editor;
 
 public partial class MainWindow : Window
 {
-    private string ThemeColours { get; set; } = "body {background-color: white}";
+    private string ChangeTheme()
+    {
+        var settings = MdWindow.GetPlatformSettings();
+        var colors = settings?.GetColorValues();
+
+        const string darkTheme = """
+        body {background-color: black; color: white;}
+        a {color: cyan;}
+        """;
+
+        const string lightTheme = @"body {background-color: white}";
+
+        // Check current theme
+        return colors?.ThemeVariant == PlatformThemeVariant.Dark ? darkTheme : lightTheme;
+    }
 
     public MainWindow()
     {
@@ -16,22 +30,13 @@ public partial class MainWindow : Window
 
         VersionText.Text = AppConsts.VERSION;
 
-        var settings = MdRender.GetPlatformSettings();
-        var colors = settings?.GetColorValues();
-
-        // Check current theme
-        if (colors?.ThemeVariant == PlatformThemeVariant.Dark)
-        {
-            ThemeColours = "body {background-color: black; color: white;}";
-        }
-
-
         var blank = $"""
                       <!DOCTYPE html>
                       <html>
-                      <head><style>{ThemeColours}</style></head>
+                      <head><style>{ChangeTheme()}</style></head>
                       </html>
                       """;
+
         MdRender.NavigateToString(blank);
     }
 
@@ -44,16 +49,16 @@ public partial class MainWindow : Window
             .UseYamlFrontMatter()
             .UseSoftlineBreakAsHardlineBreak()
             .Build();
-
         var input = MdInput.Text ?? string.Empty;
         var html = Markdown.ToHtml(input, pipeline);
         var content = $"""
                         <!DOCTYPE html>
                         <html>
-                        <head><style>{ThemeColours}</style></head>
+                        <head><style>{ChangeTheme()}</style></head>
                         <body><p>{html}</p></body>
                         </html>
                         """;
+
         MdRender.NavigateToString(content);
     }
 }

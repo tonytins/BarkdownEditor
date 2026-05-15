@@ -3,6 +3,7 @@
         <File Path=".gitignore" />
         <File Path="README.md" />
         <File Path=".editorconfig" />
+        <File Path="GitInfo.txt"/>
     </Folder>
   <Project Path="Barkdown.Editor/Barkdown.Editor.csproj" />
 </Solution>
