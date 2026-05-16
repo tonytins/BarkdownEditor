@@ -1,6 +1,6 @@
 # Barkdown Editor
 
-<div style="align-content: center;">
+<div style="text-align: center;">
     <img src="./editor-screenshot.png"/>
 </div>
 

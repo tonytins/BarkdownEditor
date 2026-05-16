@@ -42,6 +42,12 @@ public partial class MainWindow : Window
         VersionText.Text = AppConsts.VERSION;
         #endif
 
+        TPawImage.Source = IsDarkTheme switch
+        {
+            true => ImageHelper.LoadFromResource(new Uri("avares://Barkdown.Editor/Assets/tpaw-white.png")),
+            _ => ImageHelper.LoadFromResource(new Uri("avares://Barkdown.Editor/Assets/tpaw.png"))
+        };
+
         var blank = $"""
                      <!DOCTYPE html>
                      <html>
@@ -69,7 +75,7 @@ public partial class MainWindow : Window
                         <!DOCTYPE html>
                         <html>
                         {HtmlHeader}
-                        <body><p>{html}</p></body>
+                        <body><div>{html}</div></body>
                         </html>
                         """;
 
@@ -79,19 +85,6 @@ public partial class MainWindow : Window
         {
             MdRender.NavigateToString(string.Empty);
             MdRender.IsEnabled = false;
-        }
-    }
-
-    private void MdWindow_OnActualThemeVariantChanged(object? sender, EventArgs e)
-    {
-        switch (IsDarkTheme)
-        {
-            case true:
-                TPawImage.Source = ImageHelper.LoadFromResource(new Uri("avares://Barkdown.Editor/Assets/tpaw-white.png"));
-                break;
-            default:
-                TPawImage.Source = ImageHelper.LoadFromResource(new Uri("avares://Barkdown.Editor/Assets/tpaw.png"));
-                break;
         }
     }
 }
