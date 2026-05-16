@@ -1,4 +1,3 @@
-using System;
 using Markdig;
 using Markdig.SyntaxHighlighting;
 
@@ -6,41 +5,15 @@ namespace Barkdown.Editor;
 
 public partial class MainWindow : Window
 {
-    private string HtmlHeader => $"<head><style>{HtmlStyle()}</style></head>";
-
-    private bool IsDarkTheme
-    {
-        get
-        {
-            var settings = MdWindow.GetPlatformSettings();
-            var colors = settings?.GetColorValues();
-
-            return colors?.ThemeVariant == PlatformThemeVariant.Dark;
-        }
-    }
-
-    private string HtmlStyle()
-    {
-        const string darkTheme = """
-        body {background-color: black; color: white;}
-        a {color: cyan;}
-        """;
-
-        const string lightTheme = @"body {background-color: white;}";
-
-        // Check current theme
-        return IsDarkTheme ? darkTheme : lightTheme;
-    }
-
     public MainWindow()
     {
         InitializeComponent();
 
-        #if DEBUG
+#if DEBUG
         VersionText.Text = $"{AppConsts.VERSION}-{ThisAssembly.Git.Commit}";
-        #else
+#else
         VersionText.Text = AppConsts.VERSION;
-        #endif
+#endif
 
         TPawImage.Source = IsDarkTheme switch
         {
@@ -59,6 +32,32 @@ public partial class MainWindow : Window
         MdRender.NavigateToString(blank);
     }
 
+    private string HtmlHeader => $"<head><style>{HtmlStyle()}</style></head>";
+
+    private bool IsDarkTheme
+    {
+        get
+        {
+            var settings = MdWindow.GetPlatformSettings();
+            var colors = settings?.GetColorValues();
+
+            return colors?.ThemeVariant == PlatformThemeVariant.Dark;
+        }
+    }
+
+    private string HtmlStyle()
+    {
+        const string darkTheme = """
+                                 body {background-color: black; color: white;}
+                                 a {color: cyan;}
+                                 """;
+
+        const string lightTheme = @"body {background-color: white;}";
+
+        // Check current theme
+        return IsDarkTheme ? darkTheme : lightTheme;
+    }
+
     private void Markdown_OnTextChanged(object? sender, TextChangedEventArgs e)
     {
         var pipeline = new MarkdownPipelineBuilder()
@@ -72,15 +71,17 @@ public partial class MainWindow : Window
         var input = MdInput.Text ?? string.Empty;
         var html = Markdown.ToHtml(input, pipeline);
         var content = $"""
-                        <!DOCTYPE html>
-                        <html>
-                        {HtmlHeader}
-                        <body><div>{html}</div></body>
-                        </html>
-                        """;
+                       <!DOCTYPE html>
+                       <html>
+                       {HtmlHeader}
+                       <body><div>{html}</div></body>
+                       </html>
+                       """;
 
         if (!string.IsNullOrEmpty(input))
+        {
             MdRender.NavigateToString(content);
+        }
         else
         {
             MdRender.NavigateToString(string.Empty);

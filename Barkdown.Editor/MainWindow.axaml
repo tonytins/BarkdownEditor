@@ -17,16 +17,17 @@
                        Text="Untitled" />
         </Border>
         <Grid Margin="2" ColumnDefinitions="*,*" RowDefinitions="*,*">
-            <TextBox  Height="350" Margin="7,0"
-                      Name="MdInput" AcceptsReturn="true"
-                      TextWrapping="Wrap"
-                      PlaceholderText="# Hello World!"
-                      TextChanged="Markdown_OnTextChanged" />
-            <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="30" Source="avares://Barkdown.Editor/Assets/tpaw.png" Name="TPawImage" />
+            <TextBox Margin="7,0"
+                     Name="MdInput" AcceptsReturn="true"
+                     TextWrapping="Wrap"
+                     TextChanged="Markdown_OnTextChanged" />
+            <Image Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" Width="30"
+                   Source="avares://Barkdown.Editor/Assets/tpaw.png" Name="TPawImage" />
             <NativeWebView Grid.Row="0" Grid.Column="1" Height="350"
                            Margin="7,0"
                            Name="MdRender" />
-            <TextBlock Grid.Row="1" Grid.Column="1" Name="VersionText" Margin="10" HorizontalAlignment="Right" Text="v0.1.100" />
+            <TextBlock Grid.Row="1" Grid.Column="1" Name="VersionText" Margin="10" HorizontalAlignment="Right"
+                       Text="v0.1.100" />
         </Grid>
     </StackPanel>
 </Window>

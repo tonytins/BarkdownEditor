@@ -1,7 +1,3 @@
-using System;
-using System.IO;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Avalonia.Media.Imaging;
 
 namespace Barkdown.Editor;
@@ -15,7 +11,7 @@ public static class ImageHelper
         return new Bitmap(AssetLoader.Open(resourceUri));
     }
 
-    public static async Task<Bitmap?> LoadFromWeb(Uri url)
+    public static async Task<Bitmap?> LoadFromWebAsync(Uri url)
     {
         try
         {

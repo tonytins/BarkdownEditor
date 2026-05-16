@@ -4,13 +4,14 @@
         <TargetFramework>net10.0</TargetFramework>
         <Nullable>enable</Nullable>
         <RollForward>LatestMajor</RollForward>
+        <ImplicitUsings>true</ImplicitUsings>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="12.0.3"/>
-        <PackageReference Include="Avalonia.Controls.WebView" Version="12.0.1" />
+        <PackageReference Include="Avalonia.Controls.WebView" Version="12.0.1"/>
         <PackageReference Include="Avalonia.Desktop" Version="12.0.3"/>
         <PackageReference Include="Avalonia.Themes.Fluent" Version="12.0.3"/>
         <PackageReference Include="Avalonia.Fonts.Inter" Version="12.0.3"/>
@@ -19,26 +20,15 @@
             <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
         </PackageReference>
         <PackageReference Include="GitInfo" Version="3.6.0">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Markdig" Version="1.2.0" />
-        <PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7" />
+        <PackageReference Include="Markdig" Version="1.2.0"/>
+        <PackageReference Include="Markdig.SyntaxHighlighting" Version="1.1.7"/>
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Assets\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Remove="Assets\tpaw.png" />
-      <AvaloniaResource Include="Assets\tpaw.png" />
-      <None Remove="Assets\tpaw-acela.png" />
-      <None Remove="Assets\tpaw-white.png" />
-      <AvaloniaResource Include="Assets\tpaw-white.png" />
-      <None Remove="Assets\FontAwesome.otf" />
-      <AvaloniaResource Include="Assets\FontAwesome.otf" />
-      <None Remove="Assets\Icons\folder-open.svg" />
-      <None Remove="Assets\Icons\save.svg" />
+        <Folder Include="Assets\"/>
+        <AvaloniaResource Include="Assets\**"/>
     </ItemGroup>
 </Project>

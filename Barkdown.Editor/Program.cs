@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Barkdown.Editor;
+﻿namespace Barkdown.Editor;
 
 class Program
 {
